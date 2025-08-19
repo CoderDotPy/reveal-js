@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reveal.js Demo — IITM ODS</title>
+
+  <!-- Reveal.js core CSS & Theme -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css" id="theme" />
+
+  <!-- Syntax highlighting theme (for plugin/highlight) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css" />
+
+  <!-- KaTeX CSS for math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />
+
+  <style>
+    /* A couple of tasteful tweaks */
+    .reveal .title-email { font-size: 0.8em; opacity: 0.8; }
+    .reveal .footnote { position: absolute; bottom: 24px; left: 24px; font-size: 0.6em; opacity: 0.7; }
+    .reveal pre code { max-height: 520px; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Title slide (includes your email) -->
+      <section>
+        <h1>Reveal.js Presentation</h1>
+        <h3>Features: Markdown, Fragments, Code, Math, Notes</h3>
+        <p class="title-email">Contact: <a href="mailto:22f3000814@ds.study.iitm.ac.in">22f3000814@ds.study.iitm.ac.in</a></p>
+        <aside class="notes">
+          Welcome! Use the <b>S</b> key to enter speaker view. Mention the agenda: we will demo markdown slides, animated fragments, code highlighting, and math with KaTeX.
+        </aside>
+      </section>
+
+      <!-- A slide written in Markdown -->
+      <section data-markdown>
+        <textarea data-template>
+### Markdown Slide
+
+This entire slide is written in **Markdown**.
+
+- Clean, readable authoring
+- Easy to maintain in version control
+- Supports _inline code_ like `print("hello")`
+
+> Pro tip: You can keep Markdown in external `.md` files too!
+
+*Press → to continue.*
+        </textarea>
+      </section>
+
+      <!-- Animated fragments -->
+      <section>
+        <h2>Animated Reveal Fragments</h2>
+        <p class="fragment">Items appear one by one…</p>
+        <p class="fragment fade-in-then-semi-out">…with different effects…</p>
+        <p class="fragment grow">…to guide attention during your talk.</p>
+        <aside class="notes">
+          Pause between fragments to control pacing. Ask a question before revealing the next point.
+        </aside>
+      </section>
+
+      <!-- Code sample with syntax highlighting -->
+      <section>
+        <h2>Code Sample (Python)</h2>
+        <pre><code class="language-python" data-trim>
+from datetime import datetime
+
+def npv(rate, cashflows):
+    """Net Present Value given a discount rate and a list of cashflows."""
+    return sum(cf / ((1 + rate) ** t) for t, cf in enumerate(cashflows))
+
+r = 0.1
+cfs = [-1000, 400, 400, 400, 400]
+print(f"NPV@{r:.0%} = {npv(r, cfs):.2f}")
+        </code></pre>
+        <div class="footnote">Syntax highlighting via <code>plugin/highlight</code></div>
+        <aside class="notes">
+          Briefly explain the function, then mention that changing <code>r</code> alters present value. Tie to the next math slide.
+        </aside>
+      </section>
+
+      <!-- Math formulas (financial) -->
+      <section>
+        <h2>Financial Math</h2>
+        <p>Compound amount:</p>
+        <p>$$A = P\,\left(1 + \frac{r}{n}\right)^{nt}$$</p>
+        <p>Net Present Value (NPV):</p>
+        <p>$$\mathrm{NPV} = \sum_{t=0}^{T} \frac{C_t}{(1+r)^{t}}$$</p>
+        <p>Internal Rate of Return (IRR): the rate \(r\) such that \(\mathrm{NPV}(r)=0\).</p>
+        <aside class="notes">
+          Connect these formulas to the earlier code: the Python example computes NPV numerically for a fixed rate.
+        </aside>
+      </section>
+
+      <!-- Speaker notes demo -->
+      <section>
+        <h2>Speaker Notes</h2>
+        <p>Open <strong>Speaker View</strong> by pressing <kbd>S</kbd> during the presentation.</p>
+        <aside class="notes">
+          Describe how notes are visible to the presenter only. Encourage rehearsing with notes and timers in speaker view.
+        </aside>
+      </section>
+
+      <!-- Closing slide -->
+      <section>
+        <h2>Thank You!</h2>
+        <p class="fragment">Questions? Feedback?</p>
+        <p class="fragment">Email: <a href="mailto:22f3000814@ds.study.iitm.ac.in">22f3000814@ds.study.iitm.ac.in</a></p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js core JS -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+
+  <!-- Plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/markdown/markdown.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
+
+  <!-- KaTeX JS (used by the math plugin) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+  <script>
+    // Initialize Reveal
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ],
+      math: {
+        // KaTeX asset locations (served via CDN)
+        katex: 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js',
+        katexAutoRender: 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js',
+        katexCss: 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css'
+      },
+      // Optional highlight.js config
+      highlight: {
+        // Auto-apply highlighting to code blocks
+        // (the plugin handles this; leaving for clarity)
+      }
+    });
+  </script>
+</body>
+</html>
+
